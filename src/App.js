@@ -10,7 +10,9 @@ Amplify.configure(aws_exports);
 class App extends Component {
   render() {
     return (
-    <DisplayMapClass />
+      <div className="App">
+            <DisplayMapClass />
+      </div>
     );
   }
 }
