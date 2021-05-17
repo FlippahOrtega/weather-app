@@ -9,7 +9,7 @@ class DisplayMapClass extends Component {
   componentDidMount() {
     const H = window.H;
     const platform = new H.service.Platform({
-        apikey: "{HERE-API-KEY}"
+        apikey: "yQiv7R9XDTSGaPD7nqNc"
     });
 
     const defaultLayers = platform.createDefaultLayers();
