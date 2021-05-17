@@ -1,4 +1,6 @@
-// src/DisplayMapClass.export default class DisplayMapClass extends React.Component {
+import React, { Component } from 'react';
+
+class DisplayMapClass extends Component { 
   mapRef = React.createRef();
   state = {
     map: null
@@ -7,7 +9,7 @@
   componentDidMount() {
     const H = window.H;
     const platform = new H.service.Platform({
-        apikey: "yQiv7R9XDTSGaPD7nqNc"
+        apikey: "{HERE-API-KEY}"
     });
 
     const defaultLayers = platform.createDefaultLayers();
@@ -42,3 +44,5 @@
     return <div ref={this.mapRef} style={{ height: "500px" }} />;
   }
 }
+
+export default DisplayMapClass;
