@@ -12,6 +12,7 @@ class App extends Component {
     return (
       <div className="App">
         hola como estan
+          <DisplayMapClass />
       </div>
     );
   }
