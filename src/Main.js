@@ -9,9 +9,7 @@ Amplify.configure(aws_exports);
 class Main extends Component {
   render() {
     return (
-      <div className="App">
-        hola otra prueba 
-      </div>
+      <DisplayMapClass/>
     );
   }
 }
