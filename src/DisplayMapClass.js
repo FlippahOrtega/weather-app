@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
+import * as React from 'react';
 
-class DisplayMapClass extends Component { 
+export class DisplayMapClass extends React.Component {
   mapRef = React.createRef();
   state = {
     map: null
