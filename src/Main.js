@@ -6,7 +6,9 @@ import aws_exports from './aws-exports';
 Amplify.configure(aws_exports);
 
 class Main extends Component {
-	componentDidMount() {
+	async componentDidMount() {
+		const credentials = await (await Auth.currentSession()).getIdToken().getJwtToken();
+		console.log('crendeciales', credentials);
 		navigator.geolocation.getCurrentPosition(function (position) {
 			console.log('Latitude is :', position.coords.latitude);
 			console.log('Longitude is :', position.coords.longitude);
@@ -14,6 +16,7 @@ class Main extends Component {
 			var requestOptions = {
 				method: 'GET',
 				redirect: 'follow',
+				Headers: { 'Access-Control-Allow-Origin': '*' },
 			};
 
 			fetch(
