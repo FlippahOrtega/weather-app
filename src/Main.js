@@ -16,6 +16,11 @@ class Main extends Component {
 		lat: 0,
 		long: 0,
 	};
+
+	_writedata = () => {
+		console.log('no porfavors');
+	};
+
 	componentDidMount = async () => {
 		const credentials = await (await Auth.currentSession()).getIdToken().getJwtToken();
 		console.log('crendeciales', credentials);
@@ -26,7 +31,7 @@ class Main extends Component {
 			var requestOptions = {
 				method: 'GET',
 				redirect: 'follow',
-				Headers: { 'Access-Control-Allow-Origin': '*', authorization: credentials },
+				headers: { 'Access-Control-Allow-Origin': '*' },
 			};
 			let self = this;
 			fetch(
@@ -35,7 +40,7 @@ class Main extends Component {
 			)
 				.then((response) => response.json())
 				.then((result) => {
-					console.log('Resuresultlt', result);
+					console.log('Result', result);
 					self.setState({
 						location: result.observations.location[0],
 						observations: result.observations.location[0].observation[0],
@@ -46,7 +51,6 @@ class Main extends Component {
 				})
 				.catch((error) => console.log('error', error));
 		});
-		console.log('Result', this.state);
 	};
 	render() {
 		if (this.state.long !== 0) {
