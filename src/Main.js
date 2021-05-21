@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import api from './api';
 import './App.css';
 import Map from './Map';
-import Amplify from 'aws-amplify';
+import Amplify, { Auth } from 'aws-amplify';
 import aws_exports from './aws-exports';
 const urlParameters = '/maps/api/js?v=3.exp&key=';
 
@@ -16,8 +16,8 @@ class Main extends Component {
 		lat: 0,
 		long: 0,
 	};
-	componentDidMount = () => {
-		//const credentials = Auth.currentSession().getIdToken().getJwtToken();
+	componentDidMount = async () => {
+		const credentials = await Auth.currentSession().getIdToken().getJwtToken();
 		// 	console.log('crendeciales', credentials);
 		navigator.geolocation.getCurrentPosition((position) => {
 			//	console.log('Latitude is :', position.coords.latitude);
@@ -26,7 +26,7 @@ class Main extends Component {
 			var requestOptions = {
 				method: 'GET',
 				redirect: 'follow',
-				Headers: { 'Access-Control-Allow-Origin': '*' },
+				Headers: { 'Access-Control-Allow-Origin': '*', authorization: credentials },
 			};
 			let self = this;
 			fetch(
