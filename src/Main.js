@@ -36,7 +36,6 @@ class Main extends Component {
 				.then((response) => response.json())
 				.then((result) => {
 					console.log('Resuresultlt', result);
-					//	alert('Your file is being uploaded!');
 					self.setState({
 						location: result.observations.location[0],
 						observations: result.observations.location[0].observation[0],
@@ -51,6 +50,7 @@ class Main extends Component {
 	};
 	render() {
 		if (this.state.long !== 0) {
+			alert(`${this.state.observations.skyDescription} - ${this.state.observations.description}`);
 			return (
 				<div className="App">
 					<Map
