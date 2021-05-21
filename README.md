@@ -1,10 +1,19 @@
-# Create-react-app with AWS Amplify Auth 
+# Technical Challenge
 
-This auth starter implements withAuthenticator HOC to provide a basic authentication flow for signing up signing in users as well as protected client side routing using AWS Amplify. Auth features: User sign up, User sign in, Multi-factor Authentication, User sign-out.
-
-[View Demo](https://master.d2ka7y7551sk8n.amplifyapp.com/)
-
-![Amplify Auth](src/images/auth.gif)
+1. Build a serverless full stack application using the frameworks with which you feel best.
+2. MVP (Minimum Viable Product)
+   Run in AWS
+   Add User Registration Enable users for registration, authentication, and authorization for weather-app visitors to like and adopt, enabled through AWS API Gateway and its integration with Amazon Cognito.
+   Application must capture client location
+   Using weather API once the client has been registered or login successfully, it shows the weather based its location.
+   Captura de Pantalla 2021-05-10 a la(s) 0.18.32.png
+   Application must store in a cloud database Outsource all weather-app data and preserve it with a managed NoSQL database provided by Amazon DynamoDB.
+   Unique User id
+   User PII form (First_Name/Last_Name/email)
+   Location
+   Timestamp
+   Application must be responsive
+   You will create and implement changes to this application completely programmatically. You will use the AWS command line interface to run commands that create the necessary infrastructure components, including a fully managed CI / CD stack through the use of AWS CodeCommit, CodeBuild, and CodePipeline. Finally, you will complete all the necessary development tasks within your own browser by using the cloud-based IDE, AWS Cloud9.
 
 ## Deploy with the AWS Amplify Console
 
@@ -18,28 +27,28 @@ The Amplify Console will fork this repo in your GitHub account, and then build a
 
 1. Clone the repo that was just forked in your account
 
-  ```
-  git clone git@github.com:<username>/create-react-app-auth-amplify.git
+```
+git clone git@github.com:<username>/create-react-app-auth-amplify.git
 
-  cd create-react-app-auth-amplify && npm install
-  ```
+cd create-react-app-auth-amplify && npm install
+```
 
-2. Import the backend environment deployed by the Amplify Console to your repo (the `amplify/team-provider.json` file contains information on all backend environments in your AWS account). The GIF below shows how you to copy the `amplify env import` command from the Amplify Console. 
+2. Import the backend environment deployed by the Amplify Console to your repo (the `amplify/team-provider.json` file contains information on all backend environments in your AWS account). The GIF below shows how you to copy the `amplify env import` command from the Amplify Console.
 
 <img src="https://github.com/aws-samples/create-react-app-auth-amplify/blob/master/src/images/import-backend.gif" width="800"/>
 
 3. Paste this command into your terminal at the root of your repo. You should see the `amplify/team-provider.json` updated with a backend named `amplify`.
 
-  ```
-  amplify pull
-  ```
+```
+amplify pull
+```
 
 ![img](src/images/amplify-pull.mov)
 
 4. Run locally
 
-  ```
-  npm start
-  ```
+```
+npm start
+```
 
 Checkout Nader Dabit's [Complete Guide to User Authentication](https://dev.to/dabit3/the-complete-guide-to-user-authentication-with-the-amplify-framework-2inh).

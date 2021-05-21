@@ -17,8 +17,8 @@ class Main extends Component {
 		long: 0,
 	};
 	componentDidMount = async () => {
-		const credentials = await Auth.currentSession().getIdToken().getJwtToken();
-		// 	console.log('crendeciales', credentials);
+		const credentials = await (await Auth.currentSession()).getIdToken().getJwtToken();
+		console.log('crendeciales', credentials);
 		navigator.geolocation.getCurrentPosition((position) => {
 			//	console.log('Latitude is :', position.coords.latitude);
 			//console.log('Longitude is :', position.coords.longitude);
