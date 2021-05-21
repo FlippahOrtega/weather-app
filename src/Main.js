@@ -15,7 +15,6 @@ class Main extends Component {
 		feedCreation: {},
 		lat: 0,
 		long: 0,
-		userData: {},
 	};
 
 	_writedata = () => {
@@ -23,7 +22,7 @@ class Main extends Component {
 	};
 
 	componentDidMount = async () => {
-		const credentials = await (await Auth.currentSession()).getIdToken().payload;
+		const credentials = await (await Auth.currentSession()).getIdToken().getJwtToken();
 		console.log('crendeciales', credentials);
 		navigator.geolocation.getCurrentPosition((position) => {
 			//	console.log('Latitude is :', position.coords.latitude);
@@ -48,31 +47,7 @@ class Main extends Component {
 						feedCreation: result.feedCreation,
 						lat: result.observations.location[0].latitude,
 						long: result.observations.location[0].longitude,
-						userData: credentials,
 					});
-				})
-				.then(() => {
-					var myHeaders = new Headers();
-					myHeaders.append('Content-Type', 'application/json');
-
-					var raw = JSON.stringify({
-						uniqueUserId: credentials.aud,
-						username: credentials.aud,
-						Location: this.state.location,
-						Timestamp: this.state.feedCreation,
-					});
-
-					var requestOptions = {
-						method: 'POST',
-						headers: myHeaders,
-						body: raw,
-						redirect: 'follow',
-					};
-
-					fetch('https://tmb3ecnknb.execute-api.us-east-1.amazonaws.com/Prod/SendUserData', requestOptions)
-						.then((response) => response.text())
-						.then((result) => console.log(result))
-						.catch((error) => console.log('error', error));
 				})
 				.catch((error) => console.log('error', error));
 		});
