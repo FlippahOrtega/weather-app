@@ -23,6 +23,8 @@
 git clone https://github.com/FlippahOrtega/weather-app.git
 
  cd weather-app && npm i
+
+ npm start
 ```
 
 2. This environment is deployed in 
